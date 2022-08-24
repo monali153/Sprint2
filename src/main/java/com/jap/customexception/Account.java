@@ -28,10 +28,14 @@ public class Account {
      * @return
      * @throws InsufficientFundException
      */
-    public int withdraw(int amount) {
+    public int withdraw(int amount) throws InsufficientFundException {
 
-
-        return 1;
+        if (amount > getAccountBalance()) {
+            throw new InsufficientFundException("Insufficient balance in the account");
+        } else {
+            accountBalance = accountBalance - amount;
+        }
+        return accountBalance;
     }
 
 
